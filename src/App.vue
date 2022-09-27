@@ -1,49 +1,25 @@
-<script>
-import AppProducts from "./components/Products/AppProducts.vue";
-
-export default {
-  name: "App",
-
-  components: {
-    AppProducts,
-  },
-
-  data() {
-    return {};
-  },
-
-  methods: {
-    updateUser() {
-      const newUser = {
-        first_name: "Lucas",
-        last_name: "Zille",
-        email: "lucas@zille.com",
-      };
-
-      this.$store.commit('storeUser', newUser);
-    }
-  },
-};
+<script setup>
+import HelloWorld from "./components/HelloWorld.vue";
+import TheWelcome from "./components/TheWelcome.vue";
 </script>
 
 <template>
+  <header>
+    <img
+      alt="Vue logo"
+      class="logo"
+      src="./assets/logo.svg"
+      width="125"
+      height="125"
+    />
+
+    <div class="wrapper">
+      <HelloWorld msg="You did it!" />
+    </div>
+  </header>
+
   <main>
-    <AppProducts></AppProducts>
-
-    <br><br>
-
-    R$ {{ $store.getters.total }}
-
-    <br>
-
-    {{ $store.state.cart }}
-
-    <br><br>
-
-    <button
-        @click="updateUser()"
-    >Atualizar perfil
-    </button>
+    <TheWelcome />
   </main>
 </template>
 
