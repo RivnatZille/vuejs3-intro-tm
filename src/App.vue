@@ -1,94 +1,72 @@
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import { ref, reactive } from "vue";
+// import HelloWorld from "./components/HelloWorld.vue";
+import AppHook from "./components/AppHook.vue";
+import { ref, computed, watch } from "vue";
 
 export default {
   name: "App",
 
-  components: { HelloWorld },
+  components: { AppHook },
 
   setup() {
-    const user = reactive({
+    const user = ref({
       first_name: 'Jon',
       last_name: 'Snow'
     });
 
-    const admin = ref({
-      first_name: 'Admin',
-      last_name: 'Master'
+    const fullName = computed(() => `${user.value.first_name} ${user.value.last_name}`);
+
+    const showAppHook = ref(true);
+
+    watch(user, () => {
+      console.log('Testando o Watch');
+    }, {
+      deep: true
     });
 
-    let name = 'Lucas';
-
-    const changeName = () => {
-      name = 'Jon Sow';
-      user.first_name = 'Sansa';
-      admin.value.first_name = 'Ademir';
-    };
-
     return {
-      name,
-      admin,
       user,
-      changeName
+      fullName,
+      showAppHook
     }
   }
 }
 </script>
 
 <template>
-  <header>
-    {{ name }}
-    <br><br>
+  <div>
+    <AppHook v-if="showAppHook"/>
+    <button @click="showAppHook = ! showAppHook">Toggle</button>
+  </div>
+
+  <div>
     <h5>User</h5>
-    {{ user.first_name }} {{ user.last_name }}
-    <br><br>
-    <h5>Admin</h5>
-    {{ admin.first_name }} {{ admin.last_name }}
-    <img
-      @click = "changeName()"
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
+    <p>{{ user.first_name }} {{ user.last_name }}</p>
+  </div>
+  <br><br>
+  <div>
+    <h5>Full Name</h5>
+    <p>{{ fullName }}</p>
+    <br>
+    <button @click="user.first_name = 'Sansa'">Atualizar</button>
+  </div>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+<!--    <img-->
+<!--      @click = "changeName()"-->
+<!--      alt="Vue logo"-->
+<!--      class="logo"-->
+<!--      src="./assets/logo.svg"-->
+<!--      width="125"-->
+<!--      height="125"-->
+<!--    />-->
+
+<!--    <div class="wrapper">-->
+<!--      <HelloWorld msg="You did it!" />-->
+<!--    </div>-->
+
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  /*header {*/
-  /*  display: flex;*/
-  /*  place-items: center;*/
-  /*  padding-right: calc(var(--section-gap) / 2);*/
-  /*}*/
-
-  /*.logo {*/
-  /*  margin: 0 2rem 0 0;*/
-  /*}*/
-
-  /*header .wrapper {*/
-  /*  display: flex;*/
-  /*  place-items: flex-start;*/
-  /*  flex-wrap: wrap;*/
-  /*}*/
-}
 </style>
