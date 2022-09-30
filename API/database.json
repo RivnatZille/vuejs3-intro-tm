@@ -1,49 +1,19 @@
 {
   "todos": [
     {
-      "id": 1,
       "title": "Estudar Javascript",
-      "completed": true
-    },
-    {
-      "id": 2,
-      "title": "Estudar Vue",
-      "completed": false
-    },
-    {
-      "id": 3,
-      "title": "Estudar Composition API",
-      "completed": false
-    },
-    {
-      "title": "Testando a Funcionalidade",
       "completed": false,
-      "id": 4
+      "id": 1
     },
     {
-      "title": "Jogar World of Warcraft",
+      "title": "Estudar VueJS3",
       "completed": false,
-      "id": 5
+      "id": 2
     },
     {
-      "title": "Testando de novo.",
+      "title": "Estudar sobre Composition API",
       "completed": false,
-      "id": 6
-    },
-    {
-      "title": "Teste",
-      "completed": false,
-      "id": 7
-    },
-    {
-      "title": "Mais um teste, agora vai!",
-      "completed": false,
-      "id": 8
-    },
-    {
-      "title": "Dragonflight",
-      "completed": false,
-      "id": 9
+      "id": 3
     }
   ]
 }
