@@ -69,7 +69,11 @@ export default createStore({
     },
   },
 
-  getters: {},
+  getters: {
+    pendingTodos(state) {
+      return state.todos.filter(todos => ! todos.completed)
+    }
+  },
 
   modules: {},
 });

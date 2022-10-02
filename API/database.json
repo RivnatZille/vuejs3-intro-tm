@@ -12,13 +12,23 @@
     },
     {
       "title": "Estudar sobre Composition API",
-      "completed": false,
+      "completed": true,
       "id": 3
     },
     {
       "title": "Refatorar o Projeto",
-      "completed": false,
+      "completed": true,
       "id": 4
+    },
+    {
+      "title": "Adicionar Contagem de Todos Pendentes",
+      "completed": true,
+      "id": 5
+    },
+    {
+      "title": "Refatorar a contagem para Composition API",
+      "completed": true,
+      "id": 6
     }
   ]
 }

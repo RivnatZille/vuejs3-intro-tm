@@ -19,39 +19,28 @@
   </form>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 import { useStore } from "vuex";
 
-export default {
-  name: "TodoFormAdd",
+// VARIÁVEIS
+const title = ref("");
+const store = useStore();
 
-  setup() {
-    // VARIÁVEIS
-    const title = ref("");
-    const store = useStore();
+// MÉTODOS
+const addTodo = () => {
+  if (!title.value) {
+    return;
+  }
 
-    // MÉTODOS
-    const addTodo = () => {
-      if (!title.value) {
-        return;
-      }
-
-      store
-        .dispatch("addTodo", {
-          title: title.value,
-          completed: false,
-        })
-        .finally(() => {
-          title.value = "";
-        });
-    };
-
-    return {
-      title,
-      addTodo,
-    };
-  },
+  store
+      .dispatch("addTodo", {
+        title: title.value,
+        completed: false,
+      })
+      .finally(() => {
+        title.value = "";
+      });
 };
 </script>
 
